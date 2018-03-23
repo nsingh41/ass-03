@@ -35,21 +35,18 @@ functions:
           bucket: ${self:custom.bucket}
           event: s3:ObjectRemoved:*
   
-resources:
+resources:  
   Resources:
     special:
       Type: AWS::DynamoDB::Table
-      DeletionPolicy: Retain
       Properties:
+        TableName: 'special'
         AttributeDefinitions:
-          -
-            AttributeName: id
+          - AttributeName: id
             AttributeType: S
         KeySchema:
-          -
-            AttributeName: id
+          - AttributeName: id
             KeyType: HASH
         ProvisionedThroughput:
           ReadCapacityUnits: 1
           WriteCapacityUnits: 1
-TableName: special
